@@ -1,22 +1,13 @@
 class Solution {
 public:
-    void shift(vector<int>& nums,int i,int j){
-        while(i<j){
-            nums[i]=nums[i+1];
-            i++;
-        }
-    }
     void moveZeroes(vector<int>& nums) {
-        int n=nums.size(),i=0,j=n-1;
-        while(i<j){
-            if(nums[i]==0){
-            shift(nums,i,j);
-                nums[j]=0;
-                j--;
+        int i=0;
+        for(int j=0;j<nums.size();j++){
+            if(nums[j]!=0){
+                nums[i]=nums[j];
+                i++;
             }
-            while(i<j && nums[i]!=0)i++;
-            while(j>i && nums[j]==0)j--;
         }
-        
+        for(;i<nums.size();i++) nums[i]=0;
     }
 };
