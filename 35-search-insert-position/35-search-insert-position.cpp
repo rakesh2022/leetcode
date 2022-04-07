@@ -9,10 +9,10 @@ public:
             int mid=(l+r)>>1;
             if(nums[mid]==t)return mid;
             if(nums[mid]>t){
-                res=mid;
                 r=mid-1;
             }
-            else{
+            else if(nums[mid]<t){
+                res=mid+1;
                 l=mid+1;
             }
         }
