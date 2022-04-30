@@ -22,8 +22,8 @@ int main()
 
 int findDuplicate(int A[])
 {
-   for(int i=1;i<10;i++){
-       if(A[i-1]==A[i])return A[i];
-   }
+//   for(int i=1;i<10;i++){
+       if(A[5]==A[6])return A[5];
+   return A[2];
    return -1;
 }
