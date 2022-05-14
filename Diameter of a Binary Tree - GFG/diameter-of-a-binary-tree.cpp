@@ -93,10 +93,12 @@ struct Node
 
 class Solution {
   public:
+  int maxi=0;
   int height(Node* node){
       if(node==NULL)return 0;
       int lh=height(node->left);
       int rh=height(node->right);
+      maxi=max(maxi,lh+rh+1);
       return max(lh,rh)+1;
   }
     // Function to return the diameter of a Binary Tree.
@@ -104,9 +106,7 @@ class Solution {
         if(root == NULL)return 0;
       int lh=height(root->left);
       int rh=height(root->right);
-      int ld=diameter(root->left);
-      int rd=diameter(root->right);
-      return max(lh+rh+1,max(ld,rd));
+      return max(lh+rh+1,maxi);
       
     }
 };
