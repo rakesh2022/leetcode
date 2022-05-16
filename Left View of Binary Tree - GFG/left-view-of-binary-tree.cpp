@@ -132,22 +132,23 @@ vector<int> leftView(Node *root)
 {
  if(root==NULL)return {};
  vector<int>res;
- stack<pair<Node*,int >>stk;
- stk.push({root,1});
- int ht=0;
- while(!stk.empty()){
-   auto p=stk.top();
-   Node* curr=p.first;
-   int nHt=p.second;
-   stk.pop();
-   if(p.second>ht){
-       res.push_back(curr->data);
-    ht++;   
-   }
-   if(curr->right)stk.push({curr->right,nHt+1});
-   if(curr->left)stk.push({curr->left,nHt+1});
- }
- 
+queue<Node* >q;
+q.push(root);
+while(!q.empty()){
+    int x=q.size();
+    bool first=true;
+    while(x--){
+        Node* curr=q.front();
+        if(first){
+            res.push_back(curr->data);
+            first=false;
+        }
+        if(curr->left)q.push(curr->left);
+        if(curr->right)q.push(curr->right);
+        q.pop();
+    }
+    
+}
  return res;
  
 }
