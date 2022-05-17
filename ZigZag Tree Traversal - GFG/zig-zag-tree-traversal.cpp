@@ -105,42 +105,25 @@ class Solution{
     //Function to store the zig zag order traversal of tree in a list.
     vector <int> zigZagTraversal(Node* root)
     {
-        if(root==NULL)return {};
-    	vector<int>res;
-    	queue<Node*>q;
-    	q.push(root);
-    	res.push_back(root->data);
-    	int lev=0;
-    	while(!q.empty()){
-    	    int x=q.size();
-    	    lev++;
-    	    stack<int>stk;
-    	    while(x--){
-    	        Node* curr=q.front();
-    	        q.pop();
-    	   if(curr->left){
-    	       q.push(curr->left);
-    	    if(lev%2 != 0)stk.push(curr->left->data);
-    	    else
-    	    res.push_back(curr->left->data);
-    	   }
-    	   if(curr->right){
-    	       q.push(curr->right);
-    	    if(lev%2 !=0)stk.push(curr->right->data);    
-    	    else
-    	    res.push_back(curr->right->data);
-    	   }
-    	    }
-    	    if(lev%2 != 0){
-    	        while(!stk.empty()){
-    	           
-    	            res.push_back(stk.top());
-    	            stk.pop();
-    	        }
-    	        
-    	    }
-    	}
-    	
+       if(root==NULL)return {};
+       vector<int>res;
+       bool LR=true;
+       queue<Node*>q;
+       q.push(root);
+       while(!q.empty()){
+           int size=q.size();
+           vector<int>temp(size);
+           for(int i=0;i<size;i++){
+               Node* curr=q.front();
+               q.pop();
+               int index=LR?i:size-1-i;
+               temp[index]=curr->data;
+               if(curr->left)q.push(curr->left);
+               if(curr->right)q.push(curr->right);
+           }
+           LR = !LR;
+           for(auto x:temp)res.push_back(x);
+       }
     return res;
     }
 };
