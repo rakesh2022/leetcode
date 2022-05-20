@@ -14,10 +14,10 @@ public:
 	{
 	    int n=S.length();
 	    if(n<2)return 1;
-	    int i=0,j=n-1;
-	    while(i<j){
-	        if(S[i]!=S[j])return 0;
-	        i++;j--;
+	    int i=0;
+	    while(i<n){
+	        if(S[i]!=S[n-1-i])return 0;
+	        i++;
 	    }
 	    return 1;
 	}
