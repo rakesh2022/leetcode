@@ -10,24 +10,16 @@ using namespace std;
 class Solution{   
 public:
     int getPairsCount(int arr[], int n, int k) {
-        int i=0,j=n-1;
-        sort(arr,arr+n);
+        unordered_map<int,int>mp;
         int ans=0;
-        while(i<j){
-            int sum=arr[i]+arr[j];
-            if(sum >k)j--;
-            else if(sum<k)i++;
-            else{
-                int cnt=0;
-                for(int l=i;l<j;l++){
-                    if(arr[i]==arr[l])cnt++;
-                    else break;
-                }
-                ans+=cnt;
-                j--;
-            }
+        for(int i=0;i<n;i++)mp[arr[i]]++;
+        for(int i=0;i<n;i++){
+            mp[arr[i]]--;
+            if(mp[arr[i]]==0)mp.erase(arr[i]);
+            if(mp.find(k-arr[i])!=mp.end())ans+=mp[k-arr[i]];
         }
         return ans;
+      
     }
 };
 
