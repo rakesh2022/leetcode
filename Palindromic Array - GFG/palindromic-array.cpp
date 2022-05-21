@@ -6,24 +6,19 @@ using namespace std;
 
  // } Driver Code Ends
 /*Complete the function below*/
-
+#include<bits/stdc++.h>
+using namespace std;
 class Solution {
 public:
-    bool palin(int x){
-        int nnum=0;
-        int tnum=x;
-        while(tnum){
-            int rem=tnum%10;
-            nnum=nnum*10+rem;
-            tnum/=10;
-        }
-        if(x==nnum)return true;
-        return false;
-    }
+    
     int PalinArray(int a[], int n)
     {
     	for(int i=0;i<n;i++){
-    	    if(palin(a[i])==false)return 0;
+    	    string s=to_string(a[i]);
+    	    string old_s=s;
+    	    reverse(s.begin(),s.end());
+    	    if(old_s!=s)return 0;
+    	    
     	}
     	return 1;
     	
