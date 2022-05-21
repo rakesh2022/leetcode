@@ -11,11 +11,9 @@ class Solution{
     public:
     bool IsPerfect(int a[],int n)
     {
-        int i=0,j=n-1;
-        while(i<j){
-            if(a[i]!=a[j])return false;
-            i++;
-            j--;
+        // int i=0,j=n-1;
+        for(int i=0;i<n;i++){
+            if(a[i]!=a[n-1-i])return false;
         }
         return true;
     }
