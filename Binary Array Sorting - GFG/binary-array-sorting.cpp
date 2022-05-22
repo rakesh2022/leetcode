@@ -13,20 +13,13 @@ class Solution{
     //Function to sort the binary array.
     void binSort(int A[], int N)
     {
-       int zeros=0,ones=0;
-       for(int i=0;i<N;i++){
-           if(A[i]==0)zeros++;
-           else ones++;
-       }
-       int i=0;
-      while(zeros--){
-          A[i]=0;
-          i++;
+      int i=0,j=N-1;
+      while(i<j){
+          while(i<j && A[i]==0)i++;
+          while(i<j && A[j]==1)j--;
+          if(i<j)swap(A[i],A[j]);
       }
-      while(ones--){
-          A[i]=1;
-          i++;
-      }
+      
     }
 };
 
