@@ -9,11 +9,12 @@ class Solution
   public:
     string modify (string s)
     {
-        string str="";
-        for(int i=0;i<s.length();i++){
-            if(s[i]!=' ')str.push_back(s[i]);
+        // string str="";
+        int n=s.length();
+        for(int i=n-1;i>=0;i--){
+            if(s[i]==' ')s.erase(s.begin()+i);
         }
-        return str;
+        return s;
     }
 };
 
