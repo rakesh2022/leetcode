@@ -18,15 +18,10 @@ int main() {
 
 /*you are required to complete this method*/
 int convertFive(int n) {
-   int num=0;
-   while(n){
-       int rem=n%10;
-      num*=10;
-      if(rem==0)num+=5;
-      else num+=rem;
-      n/=10;
-   }
-   string s=to_string(num);
-   reverse(s.begin(),s.end());
+//   int num=0;
+  
+   string s=to_string(n);
+//   reverse(s.begin(),s.end());
+   for(int i=0;i<s.length();i++)if(s[i]=='0')s[i]='5';
    return stoi(s);
 }
