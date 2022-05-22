@@ -8,12 +8,20 @@ class Solution{
     int thirdLargest(int a[], int n)
     {
         if(n<3)return -1;
+        int x=a[0],y=a[1],z=INT_MIN;
+        if(x<y)swap(x,y);
          priority_queue<int,vector<int>,greater<int>>pq;
-         for(int i=0;i<n;i++){
-             pq.push(a[i]);
-             if(pq.size()>3)pq.pop();
+         for(int i=2;i<n;i++){
+            z=max(a[i],z);
+            if(z>x){
+                int temp=z;
+                z=y;
+                y=x;
+                x=temp;
+            }
+            else if(z>y)swap(y,z);
          }
-         return pq.top();
+         return z;
          
     }
 
