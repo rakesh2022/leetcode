@@ -19,7 +19,7 @@ public:
 	       if(m2>m1)swap(m1,m2);
 	       
 	   }
-	   if(m2==INT_MIN || m1==m2)return -1;
+	   if(m2==INT_MIN)return -1;
 	   return m2;
 	}
 };
