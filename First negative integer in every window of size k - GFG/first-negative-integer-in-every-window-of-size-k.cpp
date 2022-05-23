@@ -31,23 +31,22 @@ int main() {
 
 vector<long long> printFirstNegativeInteger(long long int A[],
                                              long long int N, long long int K) {
-        deque<pair<long long,long long>>dq;
-        vector<long long>res;
-        for(long long i=N-1;i>N-K;i--){
-            dq.push_back({A[i],i});
-        }
-        for(long long i=N-K;i>=0;i--){
-            dq.push_back({A[i],i});
-            // if(dq.size()>K)dq.pop_front();
-            while(!dq.empty() && dq.back().first>=0)dq.pop_back();
-            if(dq.empty())res.push_back(0);
-            else
-            {
-                res.push_back(dq.back().first);
-                if(dq.front().second-i+1 >= K)
-                dq.pop_front();
-            }
-        }
-        reverse(res.begin(),res.end());
-        return res;
+          long long i=0,j=0;
+          vector<long long>res;
+          deque<long long>dq;
+          while(j<N){
+              if(A[j]<0)dq.push_back(A[j]);
+              if(j-i+1 <K)j++;
+              else if(j-i+1 ==K){
+                  if(dq.size()>0){
+                      res.push_back(dq.front());
+                      if(dq.front()==A[i])
+                      dq.pop_front();
+                  }
+                  else res.push_back(0);
+                  i++;
+                  j++;
+              }
+          }
+          return res;
  }
