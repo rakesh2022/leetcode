@@ -12,7 +12,7 @@ class Solution
     {
         int cnt=0;
       for(int i=0;i<s.length();i++){
-          if(s[i]>=65 && s[i]<=90)cnt++;
+          if(isupper(s[i]))cnt++;
       }
       return cnt;
     }
