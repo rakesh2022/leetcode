@@ -1,27 +1,37 @@
 // { Driver Code Starts
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-
-int convertFive(int n);
-
+ 
 // Driver program to test above function
-int main() {
-    int T;
-    cin >> T;
-    while (T--) {
-        int n;
-        cin >> n;
-        cout << convertFive(n) << endl;
+
+ // } Driver Code Ends
+class Solution{
+  public:
+    /*you are required to complete this method*/
+    int convertFive(int n)
+    {
+        int res=0,prod=1;
+        while(n){
+            int rem=n%10;
+            if(rem==0)rem=5;
+            res+=(rem*prod);
+            n/=10;
+            prod*=10;
+        }
+        return res;
     }
-}// } Driver Code Ends
+};
 
-
-/*you are required to complete this method*/
-int convertFive(int n) {
-//   int num=0;
-  
-   string s=to_string(n);
-//   reverse(s.begin(),s.end());
-   for(int i=0;i<s.length();i++)if(s[i]=='0')s[i]='5';
-   return stoi(s);
-}
+// { Driver Code Starts.
+int main()
+{
+    int T;
+    cin>>T;
+    while(T--)
+    {
+    	int n;
+    	cin>>n;
+    	Solution obj;
+    	cout<<obj.convertFive(n)<<endl;
+    }
+}  // } Driver Code Ends
