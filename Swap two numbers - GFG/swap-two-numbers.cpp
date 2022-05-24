@@ -9,14 +9,11 @@ using namespace std;
 
 class Solution{   
 public:
-void doSwap(int *x,int *y){
-    int temp= *x;
-    *x=*y;
-    *y=temp;
-}
     pair<int, int> get(int a, int b){
-        doSwap(&a,&b);
-        return {a,b};
+         a=a+b;
+       b=a-b;
+       a=a-b;
+       return {a,b};
     }
 };
 
