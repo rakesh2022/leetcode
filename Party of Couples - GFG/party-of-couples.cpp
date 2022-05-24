@@ -10,11 +10,13 @@ using namespace std;
 class Solution{
     public:
     int findSingle(int N, int arr[]){
-       int x=0;
+       unordered_set<int>st;
        for(int i=0;i<N;i++){
-           x=x^arr[i];
+          if(st.find(arr[i])==st.end())st.insert(arr[i]);
+          else st.erase(arr[i]);
        }
-       return x;
+       
+       return *st.begin();
     }
 };
 
