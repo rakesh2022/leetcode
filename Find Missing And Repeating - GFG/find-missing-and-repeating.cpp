@@ -10,16 +10,11 @@ public:
         int i=0;
         int *res=new int[2];
         while(i<n){
-            if(arr[i]==arr[arr[i]-1]){
-                i++;
-            }
-            else{
-                if(arr[i]!=arr[arr[i]-1])
+            if(arr[i]!=i+1){
                 swap(arr[i],arr[arr[i]-1]);
-                else
-                i++;
-                
+                if(arr[i]==arr[arr[i]-1])i++;
             }
+            else i++;
            
         }
         i=0;
