@@ -99,13 +99,21 @@ class Solution{
     in a tree with given root*/
    bool path(Node* node,int a,vector<int>&v){
         if(node==NULL)return false;
-        v.push_back(node->data);
-        if(node->data==a)return true;
-        if(!path(node->left,a,v) && !path(node->right,a,v)){
-            v.pop_back();
-            return false;
+        // v.push_back(node->data);
+        if(node->data==a){
+         v.push_back(a);   
+            return true;
         }
-        return true;
+        if(path(node->left,a,v)){
+            v.push_back(node->data);
+            return true;
+            
+        }
+        if(path(node->right,a,v)){
+            v.push_back(node->data);
+            return true;
+        }
+        return false;
         
     }
     int findDist(Node* root, int a, int b) {
@@ -117,11 +125,11 @@ class Solution{
     //   for(int i=0;i<pathA.size();i++){
     //       if()
     //   }
-    int n=pathA.size(),m=pathB.size(),i=0;
-    for(;i<max(n,m);i++){
-        if(pathA[i]!=pathB[i])break;
-    }
-    return m+n-2*i;
+   while(pathA.size() && pathB.size() && pathA.back()==pathB.back()){
+       pathA.pop_back();
+       pathB.pop_back();
+   }
+    return pathA.size()+pathB.size();
     }
 };
 
