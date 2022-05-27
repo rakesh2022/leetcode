@@ -56,14 +56,16 @@ class Solution
         }
         while(!stk.empty() && stk.top()->data==9){
             stk.top()->data=0;
+            if(stk.size()==1)
+            stk.top()->data=10;
             stk.pop();
         }
         if(stk.size())stk.top()->data=stk.top()->data+1;
-        else{
-            Node* node=new Node(1);
-            node->next=head;
-            head=node;
-        }
+        // else{
+        //     Node* node=new Node(1);
+        //     node->next=head;
+        //     head=node;
+        // }
         // cur->data=cur->data+1;
         return head;
     }
