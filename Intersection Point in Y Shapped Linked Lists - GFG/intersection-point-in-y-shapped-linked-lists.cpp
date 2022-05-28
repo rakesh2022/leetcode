@@ -81,19 +81,35 @@ struct Node {
 }; */
 
 //Function to find intersection point in Y shaped Linked Lists.
+int findLength(Node* node){
+    if(node==NULL)return 0;
+    int l=0;
+    while(node!=NULL){
+        l++;
+        node=node->next;
+    }
+    return l;
+}
 int intersectPoint(Node* head1, Node* head2)
 {
-    Node *cur1=head1;
-    unordered_set<Node*>st;
-    while(cur1){
-        st.insert(cur1);
+    Node *cur1=head1,*cur2=head2;
+    int len1=findLength(cur1);
+    int len2=findLength(cur2);
+    while(len1>len2){
         cur1=cur1->next;
+        len1--;
     }
-    Node* cur2=head2;
-    while(cur2){
-        if(st.find(cur2)!=st.end())return cur2->data;
+    while(len1<len2){
+        cur2=cur2->next;
+        len2--;
+    }
+    while(cur1!=NULL && cur2!=NULL){
+        if(cur1==cur2)return cur1->data;
+        cur1=cur1->next;
         cur2=cur2->next;
     }
+    return -1;
+   
     return -1;
 }
 
