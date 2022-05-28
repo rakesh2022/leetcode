@@ -95,27 +95,27 @@ class Solution{
     // Return True if the given trees are isomotphic. Else return False.
     
 
-bool check(Node *ptr1, Node *ptr2){
-       if(!ptr1 && !ptr2)
-           return true;
-       if(!ptr1 || !ptr2)
-           return false;
-       if(ptr1->data != ptr2->data)
-           return false;
-       Node *l1 = ptr1->left?ptr1->left:nullptr;
-       Node *r1 = ptr1->right?ptr1->right:nullptr;
-       Node *l2 = ptr2->left?ptr2->left:nullptr;
-       Node *r2 = ptr2->right?ptr2->right:nullptr;
-       return (check(l1, l2) && check(r1, r2)) || (check(l1, r2) &&  check(r1, l2)) ;
-   }
+// bool check(Node *ptr1, Node *ptr2){
+//       if(!ptr1 && !ptr2)
+//           return true;
+//       if(!ptr1 || !ptr2)
+//           return false;
+//       if(ptr1->data != ptr2->data)
+//           return false;
+//       Node *l1 = ptr1->left?ptr1->left:nullptr;
+//       Node *r1 = ptr1->right?ptr1->right:nullptr;
+//       Node *l2 = ptr2->left?ptr2->left:nullptr;
+//       Node *r2 = ptr2->right?ptr2->right:nullptr;
+//       return (check(l1, l2) && check(r1, r2)) || (check(l1, r2) &&  check(r1, l2)) ;
+//   }
     bool isIsomorphic(Node *root1,Node *root2)
     {
-    // if(root1==NULL && root2==NULL)return true;
-    // if(root1!=NULL || root2!=NULL)return false;
-    // if(root1->data != root2->data)return false;
-    // return (isIsomorphic(root1->left,root2->left) && isIsomorphic(root1->right,root2->right)) || 
-    // (isIsomorphic(root1->right,root2->left) && isIsomorphic(root1->left,root2->right));
-    return check(root1,root2);
+    if(root1==NULL && root2==NULL)return true;
+    if(root1==NULL || root2==NULL)return false;
+    if(root1->data != root2->data)return false;
+    return (isIsomorphic(root1->left,root2->left) && isIsomorphic(root1->right,root2->right)) || 
+    (isIsomorphic(root1->right,root2->left) && isIsomorphic(root1->left,root2->right));
+    // return check(root1,root2);
     
     
     }
