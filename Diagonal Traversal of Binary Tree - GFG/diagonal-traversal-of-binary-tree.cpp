@@ -120,20 +120,44 @@ struct Node
     Node* left, * right;
 }; */
 
-void helper(Node* root,int d,map<int,vector<int>>&mp){
-    if(root==NULL)return ;
-    mp[d].push_back(root->data);
-    helper(root->left,d+1,mp);
-    helper(root->right,d,mp);
+// void helper(Node* root,int d,map<int,vector<int>>&mp){
+//     if(root==NULL)return ;
+//     mp[d].push_back(root->data);
+//     helper(root->left,d+1,mp);
+//     helper(root->right,d,mp);
     
-}
+// }
 vector<int> diagonal(Node *root)
 {
    vector<int>res;
-   map<int,vector<int>>mp;
-   helper(root,0,mp);
-   for(auto &it:mp){
-       res.insert(res.end(),it.second.begin(),it.second.end());
-   }
-   return res;
+//   map<int,vector<int>>mp;
+//   helper(root,0,mp);
+//   for(auto &it:mp){
+//       res.insert(res.end(),it.second.begin(),it.second.end());
+//   }
+//   return res;
+queue<Node*>q;
+q.push(root);
+while(!q.empty()){
+    int sz=q.size();
+   
+    while(sz--){
+         Node* temp=q.front();
+         q.pop();
+         while(temp){
+             res.push_back(temp->data);
+             if(temp->left)q.push(temp->left);
+             temp=temp->right;
+         }
+    }
+}
+return res;
+
+
+
+
+
+
+
+
 }
