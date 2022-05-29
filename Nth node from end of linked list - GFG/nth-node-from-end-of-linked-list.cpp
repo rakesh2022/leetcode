@@ -60,23 +60,27 @@ int main()
 */
 
 //Function to find the data of nth node from the end of a linked list.
-int getlen(Node* head){
-    int len=0;
-    while(head){
-       head= head->next;
-        len++;
-    }
-    return len;
-}
+// int getlen(Node* head){
+//     int len=0;
+//     while(head){
+//       head= head->next;
+//         len++;
+//     }
+//     return len;
+// }
 int getNthFromLast(Node *head, int n)
 {
-       int len=getlen(head);
-    if(len<n)return -1;
-    Node* cur=head;
-    n=len-n;
-    while(n--){
-        cur=cur->next;
-    }
-    return cur->data;
+     Node *head2=head,*head1=head;
+     n--;
+     while(n--){
+         if(head2==NULL)return -1;
+         head2=head2->next;
+     }
+     if(head2==NULL)return -1;
+     while(head2->next){
+         head2=head2->next;
+         head1=head1->next;
+     }
+     return head1->data;
 }
 
