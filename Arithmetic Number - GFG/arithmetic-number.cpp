@@ -10,10 +10,10 @@ using namespace std;
 class Solution{
 public:
     int inSequence(int A, int B, int C){
-        if(C==0){
+        // if(C==0){
         if(A==B)return 1;
-        return 0;
-        }
+        // return 0;
+        // }
        double x=(double)(B-A)/C;
        int x1=x;
        if(x<0)return 0;
