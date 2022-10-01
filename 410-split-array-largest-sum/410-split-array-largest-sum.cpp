@@ -10,10 +10,8 @@ public:
                 sum=nums[i];
                 if(m==0)return false;
             }
-            else if(i==nums.size()){
-                m--;
             }
-        }
+        
         if(m<0)return false;
         return true;
     }
