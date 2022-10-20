@@ -43,26 +43,20 @@ public:
 //         }
 //     }
 // }
-    void dfs(Node* node, Node* clone, vector<Node*>&vis){
-        vis[clone->val]=clone;
-        for(auto v: node->neighbors){
-            if(vis[v->val]==NULL){
-                Node* newNode= new Node(v->val);
-                (clone->neighbors).push_back(newNode);
-                dfs(v, newNode,vis);
-            }
-            else{
-                (clone->neighbors).push_back(vis[v->val]);
+    unordered_map<Node*,Node*>mp;
+    Node* clone(Node* node){
+        if(mp.find(node)==mp.end()){
+            mp[node]= new Node(node->val);
+            for(auto v:node->neighbors){
+                mp[node]->neighbors.push_back(clone(v));
             }
         }
-        
+        return mp[node];
     }
     Node* cloneGraph(Node* node) {
+      mp.clear();
         if(node==NULL)return NULL;
-        vector<Node*>vis(101,NULL);
-        Node* newNode= new Node(node->val);
-        dfs(node, newNode,vis);
-        return newNode;
+        return clone(node);
     }
    
 
