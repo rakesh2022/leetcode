@@ -5,13 +5,12 @@ public:
         int i=0,j=0,ans=0;
         for(;j<f.size();j++){
             mp[f[j]]++;
-            while(mp.size()==3){
+           if(mp.size()>2){
                 mp[f[i]]--;
                 if(mp[f[i]]==0)mp.erase(f[i]);
                 i++;
             }
-            ans= max(j-i+1, ans);
         }
-        return ans;
+        return j-i;
     }
 };
