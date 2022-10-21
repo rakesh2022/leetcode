@@ -6,8 +6,7 @@ public:
         for(;j<f.size();j++){
             mp[f[j]]++;
            if(mp.size()>2){
-                mp[f[i]]--;
-                if(mp[f[i]]==0)mp.erase(f[i]);
+                if(--mp[f[i]] == 0)mp.erase(f[i]);
                 i++;
             }
         }
