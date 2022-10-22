@@ -3,14 +3,17 @@ public:
     void rotate(vector<vector<int>>& m) {
         //transpose
         int n= m.size();
+        vector<vector<int>>mat(n,vector<int>(n));
+        int c=n;
         for(int i=0;i<n;i++){
-            for(int j=i;j<n;j++){
-                swap(m[i][j], m[j][i]);
+            int r=0;
+            c--;
+            for(int j=0;j<n;j++){
+                mat[r++][c]=m[i][j];
+                
             }
         }
-        for(int i=0;i<n;i++){
-            reverse(m[i].begin(), m[i].end());
-        }
+       m=mat;
         // ret
     }
 };
