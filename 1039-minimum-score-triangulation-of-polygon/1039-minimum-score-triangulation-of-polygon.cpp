@@ -4,13 +4,13 @@ public:
         int n=v.size();
      vector<vector<int>>t(50,vector<int>(50));
         for(int i=n-1;i>=0;i--){
-            for(int j=i+1;j<n;j++){
+            for(int j=0;j<n;j++){
                 if(j-i < 2)continue;
                 int res=INT_MAX;
                 for(int k=i+1;k<j;k++){
                     res= min(res,t[i][k]+t[k][j]+ v[k]*v[i]*v[j]);
                 }
-                cout<<res;
+                // cout<<res;
                 t[i][j]=res;
             }
         }
