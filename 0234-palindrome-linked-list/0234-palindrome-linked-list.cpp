@@ -12,7 +12,7 @@ class Solution {
 public:
     void reverse(ListNode* head){
         if(head==NULL || head->next==NULL)return ;
-        ListNode* ptr=head,*nxt=head->next,*prev=NULL;
+        ListNode* ptr=head,*nxt=head->next,*prev=NULL ;
         
        while(ptr){
            nxt=ptr->next;
