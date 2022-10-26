@@ -12,10 +12,14 @@ class Solution {
 public:
     void reverse(ListNode* head){
         if(head==NULL || head->next==NULL)return ;
-        ListNode* nxt=head->next;
-        head->next=NULL;
-        reverse(nxt);
-        nxt->next=head;
+        ListNode* ptr=head,*nxt=head->next,*prev=NULL;
+        
+       while(ptr){
+           nxt=ptr->next;
+           ptr->next=prev;
+           prev=ptr;
+           ptr=nxt;
+       }
     }
     bool isPalindrome(ListNode* head) {
         if(head==NULL || head->next==NULL)return true;
