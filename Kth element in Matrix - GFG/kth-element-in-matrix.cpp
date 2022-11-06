@@ -28,19 +28,40 @@ int main()
 
 // } Driver Code Ends
 
+class node{
+  public:
+  int r,c,data;
+  node(int data_, int r_, int c_){
+      data= data_;
+      r=r_;
+      c=c_;
+  }
+};
 
+class compare{
+    public:
+    bool operator()(node* a,node* b){
+        return a->data > b->data;
+    }
+};
 
 int kthSmallest(int mat[MAX][MAX], int n, int k)
 {
-  vector<int>freq(10001);
-  for(int i=0;i<n;i++){
-      for(int j=0;j<n;j++){
-          freq[mat[i][j]]++;
-      }
-  }
-  for(int i=0;i<10001;i++){
-      k-= freq[i];
-      if(k<=0)return i;
-  }
-  return 0;
+ priority_queue<node*,vector<node*>, compare>pq;
+ for(int i=0;i<n;i++){
+     node* tmp= new node(mat[0][i], 0,i);
+     pq.push(tmp);
+ }
+ while(--k){
+     node* small= pq.top();
+     pq.pop();
+     int i=small->r;
+     int j=small->c;
+     if(i<n-1){
+         node* tmp= new node(mat[i+1][j], i+1,j);
+         pq.push(tmp);
+     }
+ }
+ return pq.top() ->data;
+ 
 }
