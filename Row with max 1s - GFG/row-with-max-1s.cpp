@@ -10,11 +10,11 @@ public:
 	    int ans=-1;
 	   int r=0,c=m-1;
 	   while(r<n && c>=0){
-	       while(c>=0 && arr[r][c]==1){
+	       if(arr[r][c]==1){
                        c--;
                        ans=r;
 	       }
-	       if(c<0)return ans;
+	       else
 	       r++;
 	       
 	   }
