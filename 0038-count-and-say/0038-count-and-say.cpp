@@ -4,15 +4,17 @@ public:
         if(n==1)return "1";
          string cur=countAndSay(n-1);
          string res="";
-         stack<char>st;
-        st.push(cur[0]);
+        // st.push(cur[0]);
+        int j=0;
+        char ch=cur[0];
         cur.push_back('a');
          for(int i=1;i<cur.size();i++){
-             if(st.top() != cur[i]){
-                 res+= to_string(st.size())+st.top();
-                 st=stack<char>();
+             if(ch != cur[i]){
+                 res+= to_string(i-j)+ch;
+                 j=i;
+                 ch=cur[i];
              }
-             st.push(cur[i]);
+             
          }
         return res;
     }
