@@ -6,26 +6,21 @@ using namespace std;
 class Solution{   
 public:
     int minimumNumberOfSwaps(string S){
-        stack<char>st;
-        queue<int>q;
-        for(int i=0;i<S.length();i++){
-            if(S[i]=='[')q.push(i);
-        }
-        int cnt=0,ans=0;
+       int close=0,open=0,fault=0,ans=0;
+       
             for(int i=0;i<S.length();i++){
                 if(S[i]=='['){
-                    cnt++;
-                    q.pop();
+                   open++;
+                   if(fault>0){
+                       ans+=fault;
+                       fault--;
+                   }
                 }
                 else{
-                   cnt--;
+                  close++;
+                  fault=close-open;
                 }
-                if(cnt<0){
-                    swap(S[i],S[q.front()]);
-                    ans+= q.front()-i;
-                    q.pop();
-                    cnt=1;
-                }
+                
             }
             return ans;
     }
