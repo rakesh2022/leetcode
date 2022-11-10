@@ -19,13 +19,12 @@ class Solution {
         mp['C']=100;
         mp['D']=500;
         mp['M']=1000;
-    int ans=0;
+    int ans=mp[str.back()];
     // reverse(str.begin(), str.end());
-    for(int i=str.size()-1;i>=0;i--){
-        if(i>0 && mp[str[i]]>mp[str[i-1]]){
-        ans+=mp[str[i]];
-        ans-=mp[str[i-1]];
-        i--;
+    for(int i=str.size()-2;i>=0;i--){
+        if(mp[str[i]]<mp[str[i+1]]){
+        // ans+=mp[str[i]];
+        ans-=mp[str[i]];
         }
         else
         ans+=mp[str[i]];
