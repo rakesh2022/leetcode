@@ -6,15 +6,15 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
     public:
+    string distinct(string s){
+        if(s.size()<=1)return s;
+        if(s[0]==s[1])
+        return distinct(s.substr(1));
+        return s[0]+ distinct(s.substr(1));
+    }
     string removeConsecutiveCharacter(string S)
     {
-       int i=0;
-       for(int j=1;j<S.length();j++){
-           if(S[j]!=S[i]){
-               S[++i]=S[j];
-           }
-       }
-       return S.substr(0,i+1);
+      return distinct(S);
        
     }
 };
