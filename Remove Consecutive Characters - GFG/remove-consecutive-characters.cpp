@@ -10,7 +10,7 @@ class Solution{
     {
        int i=0;
        for(int j=1;j<S.length();j++){
-           if(S[j]!=S[j-1]){
+           if(S[j]!=S[i]){
                S[++i]=S[j];
            }
        }
